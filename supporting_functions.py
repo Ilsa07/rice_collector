@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed May  6 17:49:03 2020
-
-@author: malat
-"""
 import pyautogui 
 import time
 import random
@@ -43,8 +37,10 @@ def take_screenshot(save_image = True, return_image = False):
     image = pyautogui.screenshot()
     image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     
-    image_name = 'current_progress_'+str(datetime.now())
-    image_name = image_name.replace(" ", "")
+    date = str(datetime.now())[:10] + '_' +str(datetime.now())[11:16]
+
+    image_name = 'current_progress_'+date
+    image_name = image_name.replace(" ", "_")
     image_name = image_name.replace(":", "_")
     image_name = image_name.replace("-", "_")
     image_name = image_name.replace(".", "_")
@@ -52,32 +48,17 @@ def take_screenshot(save_image = True, return_image = False):
     if(save_image):
         cv2.imwrite('hour_logs/'+image_name+'.jpg', image)
         print('Screenshot taken!')
-        
-    time.sleep(1)
     
     if(return_image):
         return image
 
 
 def click_on_screen(coordinates_touple):
-    # Record the initial mouse position
-    current_mouse_position = pyautogui.position()
-    
-    # Off course stop at the middle of the movement, randomness implemented
-    off_course_stop = [((current+moveTo)/2) * random.uniform(0.7, 1.4) for current, moveTo in zip(current_mouse_position, coordinates_touple)]
-    pyautogui.moveTo(off_course_stop[0], off_course_stop[1], duration = random.uniform(0.8, 1.2))
-    time.sleep(random.uniform(0.1, 0.4))
+    # Move to the location
+    pyautogui.moveTo(coordinates_touple[0], coordinates_touple[1], duration = 1)
+    time.sleep(1)
 
-    # Random overshoot/undershoot based on final location
-    overshoot_coordinates = [coordinate + random.uniform(-40, 40) for coordinate in coordinates_touple]
-    pyautogui.moveTo(overshoot_coordinates[0], overshoot_coordinates[1], duration = random.uniform(0.5, 0.9))
-    time.sleep(random.uniform(0.3, 0.6))
-
-    # Correction to exact position
-    pyautogui.moveTo(coordinates_touple[0], coordinates_touple[1], duration = random.uniform(0.2, 0.6))
-    time.sleep(random.uniform(0.1, 0.4))
-
-    # Click on final location
+    # Click on the specified location
     pyautogui.click(coordinates_touple[0], coordinates_touple[1])
 
 
@@ -105,18 +86,35 @@ def is_synonym(searched_word, input_word):
 
 
 def get_choices(image):
-    problem = image[250:320, 780:1120]          # Good
-    first_choice = image[350:400, 780:1120]     # Good
-    second_choice = image[420:470, 780:1120]    # Good
-    third_choice = image[490:545, 780:1120]     # Good
-    fourth_choice = image[565:610, 780:1120]    # Good
+    problem = image[400:500, 1150:1750]          # Good
+    #cv2.imwrite('hour_logs/problem.jpg', problem)
+
+    first_choice = image[520:600, 1150:1750]     # Good
+    #cv2.imwrite('hour_logs/first_choice.jpg', first_choice)
+    
+    second_choice = image[640:720, 1150:1750]    # Good
+    #cv2.imwrite('hour_logs/second_choice.jpg', second_choice)
+
+    third_choice = image[760:840, 1150:1750]     # Good
+    #cv2.imwrite('hour_logs/third_choice.jpg', third_choice)
+
+    fourth_choice = image[870:950, 1150:1750]    # Good
+    #cv2.imwrite('hour_logs/fourth_choice.jpg', fourth_choice)
     
     # make a list out of it
     image_list = [first_choice, second_choice, third_choice, fourth_choice]
     word_list = []
+
+    # The problem has to be read in first, since the sentence must be split
+    # in order to get the problem word
     text_problem = pytesseract.image_to_string(problem, lang='eng')
     text_problem = text_problem.split()
-    word_list.append(text_problem[0])
+
+    try:
+        word_list.append(text_problem[0])
+    except:
+        print('OCR could not read in problem')
+        word_list.append('None')
     
     for image in image_list:
         text = pytesseract.image_to_string(image, lang='eng')

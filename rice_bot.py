@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue May  5 22:52:15 2020
-
-@author: malat
-"""
 import pyautogui 
 import time
 import random
@@ -18,17 +12,19 @@ pyautogui.FAILSAFE = True
 
 
 # Button positions:
-first_choice = (991, 372)
-second_choice =(981, 429)
-third_choice = (984, 515)
-fourth_choice = (988, 588)
-refresh_button_position = (107, 59)
+first_choice = (730, 280)
+second_choice =(730, 340)
+third_choice = (730, 400)
+fourth_choice = (730, 450)
+
+refresh_button_position = (997, 17)
+out_of_boxes = (55,400)
 
 
 time.sleep(5)
 
 take_screenshot()
-number_of_hours_to_run = 5
+number_of_hours_to_run = 1
 start_time = datetime.now()
 
 while(number_of_hours_to_run>0):
