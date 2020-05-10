@@ -1,5 +1,5 @@
 # Rice collector BOT
-A fun project automating the [FreeRice](https://freerice.com/categories/english-vocabulary) game, where rice is donated every time you match a word with its synonym. With the use of OpenCV, Tesseract and PyAutoGui, the game can be fully automated!
+A fun project automating the [FreeRice](https://freerice.com/categories/english-vocabulary) game, where rice is donated every time you match a word with its synonym. With the use of OpenCV, Tesseract and PyAutoGUI, the game can be fully automated!
 
 ## Getting Started
 1.  Clone the project and create a virtual environment.
