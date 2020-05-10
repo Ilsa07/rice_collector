@@ -2,13 +2,12 @@
 A fun project automating the [FreeRice](https://freerice.com/categories/english-vocabulary) game, where rice is donated every time you match a word with its synonym. Witht he use of OpenCV, Tesseract and PyAutoGui, the game can be fully automated!
 
 ## Getting Started
-1.  Create a folder an a virtual environment.
-2.  Clone the project into the created folder and environment.
-3.  Install the required packages:
+1.  Clone the project and create a virtual environment.
+2.  Install the required packages in the virtual environment:
     ```
     pip3 install -r requirements.txt
     ```
-4.  Install Tesseract
+3.  Install Tesseract
     With Homebrew (Mac):
     ```
     brew install tesseract
