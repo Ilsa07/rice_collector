@@ -8,10 +8,12 @@ A fun project automating the [FreeRice](https://freerice.com/categories/english-
     ```
     pip3 install -r requirements.txt
     ```
-4.  Install Tesseract:
+4.  Install Tesseract
+    With Homebrew (Mac):
     ```
     brew install tesseract
     ```
+    Or on Windows download the installer [here](https://github.com/UB-Mannheim/tesseract/wiki), in this case you will have to set the PATH in supporting_functions.py.
 
 ## Runing the script and playing the game
 1.  The script was written to play on a **Mac** in a **full screen Safari** window, where **multiple tabs are open**.       Depending on your machine, you will have to **adjust the variables in the global_variables.py** file so the problem,    options and button locations as well as the refresh page button location is accurate.
