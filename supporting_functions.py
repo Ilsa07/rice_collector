@@ -13,8 +13,6 @@ from global_variables import positions
 
 
 
-
-
 def hour_passed(datetime_object) -> bool:
     """
     DOCSTRING: this function calculates if an hour has passed compared to the input

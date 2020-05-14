@@ -9,8 +9,6 @@ pyautogui.FAILSAFE = True
 
 
 
-
-
 # Delay to switch to the browser and make it full size
 time.sleep(5)
 
@@ -20,6 +18,11 @@ take_screenshot()
 # Record the start time
 start_time = datetime.now()
 
+# While loop that will play the game for multiple hours
+# The loop will finish when the specified number of hours
+# (in global_variables.py) has passed
+# The loop can be broken by triggering the PyAutoGUI's 
+# failsafe: moving the mouse to the top left corner of the screen
 while(positions['num_of_hours_to_run'] > 0):
 
     #Check if an hour has passed
