@@ -21,3 +21,6 @@ A fun project automating the [FreeRice](https://freerice.com/categories/english-
 4.  Run the rice_bot.py script
 5.  You have 5 seconds to switch to the browser and make it full screen.
 6.  If you want to abort the program, move your mouse to the top left of the screen (you might have to "fight"              PyAutoGui, but this will abort the program).
+
+## Issues
+PyAutoGUI currently does not work on MacOS Mojave, which means that the program will not perform any actions.

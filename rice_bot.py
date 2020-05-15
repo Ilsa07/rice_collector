@@ -46,39 +46,20 @@ while(positions['num_of_hours_to_run'] > 0):
         # Get list of words
         choices = get_choices(screenshot)
         
-        # Check which option matches
-        if(is_synonym(choices[0], choices[1])):
-            click_on_screen(positions['first_choice'])
+        # Find the synonym of the problem
+        for count, item in enumerate(positions['button_positions']):
+            if(is_synonym(choices[0], choices[count+1])):
+                # Click on the match
+                click_on_screen(item)
 
-            # Move mouse out of the box for the next screenshot
-            pyautogui.moveTo(positions['resting_position'][0], positions['resting_position'][1], 1)
-            time.sleep(1)
-
-        elif(is_synonym(choices[0], choices[2])):
-            click_on_screen(positions['second_choice'])
-            
-            # Move mouse out of the box for the next screenshot
-            pyautogui.moveTo(positions['resting_position'][0], positions['resting_position'][1], 1)
-            time.sleep(1)
-
-        elif(is_synonym(choices[0], choices[3])):
-            click_on_screen(positions['third_choice'])
-            
-            # Move mouse out of the box for the next screenshot
-            pyautogui.moveTo(positions['resting_position'][0], positions['resting_position'][1], 1)
-            time.sleep(1)
-
-        elif(is_synonym(choices[0], choices[4])):
-            click_on_screen(positions['fourth_choice'])
-            
-            # Move mouse out of the box for the next screenshot
-            pyautogui.moveTo(positions['resting_position'][0], positions['resting_position'][1], 1)
-            time.sleep(1)
-        
+                # Move mouse out of the box for the next screenshot
+                pyautogui.moveTo(positions['resting_position'][0], positions['resting_position'][1], 1)
+                time.sleep(1)
+                break
         else:
             # If no matches were found click on the third choice
             print('Could not find a match..')
-            click_on_screen(positions['third_choice'])
+            click_on_screen(positions['button_positions'][2])
             
             # Move mouse out of the box for the next screenshot
             pyautogui.moveTo(positions['resting_position'][0], positions['resting_position'][1], 1)

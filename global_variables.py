@@ -2,12 +2,12 @@ positions = {
     'num_of_hours_to_run': 1,           # Number of yours to run the script
 
     # Click positions
-    'first_choice': (730, 280),         # The position of the first choice button
-    'second_choice': (730, 340),        # The position of the second choice button
-    'third_choice': (730, 400),         # The position of the third choice button
-    'fourth_choice': (730, 450),        # The position of the fourth choice button
     'refresh_page': (997, 17),          # The position of the refresh browser button
     'resting_position': (55,400),       # Mouse resting position
+
+    # Button positions that store the location of the possible choices
+    #[(first button pos), (second button pos), (third button pos), (fourth button pos)]
+    'button_positions': [(730, 280), (730, 340), (730, 400), (730, 450)],
 
     # Image segments
     'prob_y_top_bound': 400,            # Top Y boundary of the problem in the screenshot
