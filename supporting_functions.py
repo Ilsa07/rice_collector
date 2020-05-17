@@ -103,10 +103,10 @@ def is_synonym(searched_word: str, input_word: str) -> bool:
     data_list = response.json()
 
     # Store the synonyms in a list
-    new_list = [element['word'] for element in data_list]
+    synonym_list = [element['word'] for element in data_list]
     
     # Check if the input word is a sysnonym of the searched word 
-    if(input_word in new_list):
+    if(input_word in synonym_list):
         print(f'The sysnonym of {searched_word} was: {input_word}')
         return True
 
